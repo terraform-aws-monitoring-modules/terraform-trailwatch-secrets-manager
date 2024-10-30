@@ -1,4 +1,15 @@
-# aws-monitoring-secrets-manager
+<p align="center">
+  <a href="https://github.com/terraform-trailwatch-modules" title="Terraform Trailwatch Modules"><img src="https://raw.githubusercontent.com/terraform-trailwatch-modules/art/refs/heads/main/logo.jpg" height="100" alt="Terraform Trailwatch Modules"></a>
+</p>
+
+<h1 align="center">Secrets Manager</h1>
+
+<p align="center">
+  <a href="https://github.com/terraform-trailwatch-modules/terraform-trailwatch-secrets-manager/releases" title="Releases"><img src="https://img.shields.io/badge/Release-1.0.1-1d1d1d?style=for-the-badge" alt="Releases"></a>
+  <a href="https://github.com/terraform-trailwatch-modules/terraform-trailwatch-secrets-manager/blob/main/LICENSE" title="License"><img src="https://img.shields.io/badge/License-MIT-1d1d1d?style=for-the-badge" alt="License"></a>
+</p>
+
+## About
 This Terraform module creates CloudWatch Log Metric Filters and associated Alarms for monitoring AWS Secrets Manager secrets based on specified event names. It helps ensure that critical changes to Secrets Manager secrets are monitored effectively, and alerts are sent to a pre-existing SNS topic.
 
 ## Features
@@ -27,8 +38,8 @@ This Terraform module creates CloudWatch Log Metric Filters and associated Alarm
 
 ## Simple Example
 ```hcl
-module "aws_monitoring_secretsmanager" {
-  source                         = "path/to/module"
+module "terraform_trailwatch_secretsmanager_secret" {
+  source                         = "terraform-trailwatch-modules/secrets-manager/trailwatch"
   secretsmanager_secret_arns     = ["arn:aws:secretsmanager:region:account-id:secret:my-secret"]
   cw_log_group_name              = "the-cloudtrail-log-group"
   cw_metric_filter_alarm_actions = ["arn:aws:sns:region:account-id:sns-topic"]
@@ -37,8 +48,8 @@ module "aws_monitoring_secretsmanager" {
 
 ## Advanced Example
 ```hcl
-module "aws_monitoring_secretsmanager" {
-  source                                     = "path/to/module"
+module "terraform_trailwatch_secretsmanager_secret" {
+  source                                     = "terraform-trailwatch-modules/secrets-manager/trailwatch"
   secretsmanager_secret_arns                 = ["arn:aws:secretsmanager:region:account-id:secret:my-secret"]
   secretsmanager_secret_events               = ["GetSecretValue", "PutSecretValue"]
   cw_log_group_name                          = "the-cloudtrail-log-group"
